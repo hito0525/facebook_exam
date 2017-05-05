@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_action :set_topic, only:[:edit, :update, :destroy]
+
   def index
     @topics = Topic.all
     @topics = Topic.order(:created_at).reverse_order
@@ -6,32 +8,50 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new
+    if params[:back]
+      @topic = Topic.new(topics_params)
+    else
+      @topic = Topic.new
+    end
   end
 
+
   def create
-    Topic.create(topics_params)
+    @topic = Topic.new(topics_params)
+    if @topic.save
     redirect_to topics_path, notice: "トピックスを作成しました！"
+    else
+    render action: 'new'
+    end
   end
 
   def edit
-    @topic = Topic.find(params[:id])
   end
 
   def update
-    @topic =Topic.find(params[:id])
-    @topic.update(topics_params)
-    redirect_to topics_path
+    if @topic.update(topics_params)
+      redirect_to topics_path, notice: "トピックスを更新しました！"
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    @topic = Topic.find(params[:id])
     @topic.destroy
-    redirect_to topics_path,notice: "ブログを削除しました！"
+    redirect_to topics_path, notice: "トピックスを削除しました！"
   end
+
+  def confirm
+    @topic = Topic.new(topics_params)
+  end
+
 
   private
     def topics_params
       params.require(:topic).permit(:title, :content)
+    end
+
+    def set_topic
+      @topic = Topic.find(params[:id])
     end
 end

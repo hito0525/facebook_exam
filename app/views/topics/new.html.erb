@@ -1,12 +1,2 @@
-<%= form_for(@topic) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <br>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
-  <br>
-  <%= f.submit %>
-<% end %>
-
-<%= link_to "トピックス一覧画面にもどる", topics_path %>
-
+<p id="notice"><%= notice %></p>
+<%= render 'form' %>

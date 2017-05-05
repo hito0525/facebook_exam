@@ -1,0 +1,15 @@
+<h3> 以下の内容で登録します。</h3>
+
+<%= form_for(@topic)do |f| %>
+<%= f.hidden_field :title %>
+<%= f.hidden_field :content %>
+<p>タイトル:<%= @topic.title %></p>
+<p>本文:<%= @topic.content %></p>
+<%= f.submit "登録する" %>
+<% end %>
+
+<%= form_for(@topic, url: new_topic_path, method: 'get') do |f| %>
+  <%= f.hidden_field :title %>
+  <%= f.hidden_field :content %>
+  <%= f.submit "もどる", name: 'back'  %>
+<% end %>
