@@ -11,12 +11,12 @@
   <% end %>
 
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title , class: 'form-control'%>
   <br>
   <%= f.label :content %>
-  <%= f.text_field :content %>
+  <%= f.text_field :content , class: 'form-control' %>
   <br>
-  <%= f.submit %>
+  <%= f.submit'投稿', class: 'btn btn-primary btn-block' %>
 <% end %>
 
 <%= link_to "トピックス一覧画面にもどる", topics_path %>

@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FacebookExam</title>
+  <title>Facebook</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<header>
+  <ul>
+    <li><%= link_to "ホーム", topics_path %></li>
+    <li><a href="#">USER</a></li>
+  </ul>
+</header>
 <body>
+
 
 <%= yield %>
 
 </body>
+<footer>
+  <p>Facebook © 2017</p>
+</footer>
+
 </html>
