@@ -51,3 +51,7 @@ gem 'jquery-turbolinks'
 
 gem 'fog'
 
+gem 'dotenv-rails'
+gem 'unicorn'
+
+
