@@ -45,13 +45,14 @@ group :development do
   gem 'spring'
 end
 
+gem 'devise'
 gem 'twitter-bootstrap-rails'
-
 gem 'jquery-turbolinks'
 
 gem 'fog'
 
 gem 'dotenv-rails'
+
 gem 'unicorn'
 
 gem 'therubyracer', platforms: :ruby

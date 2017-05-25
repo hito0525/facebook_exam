@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-resources :topics, only:[:index, :new, :create, :edit, :update, :destroy] do
-  collection do
-    post :confirm
+  devise_for :users
+  resources :topics, only:[:index, :new, :create, :edit, :update, :destroy] do
+    collection do
+      post :confirm
+    end
   end
-end
-  root 'top#index'
+    root 'top#index'
 end
