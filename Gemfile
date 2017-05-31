@@ -50,6 +50,7 @@ gem 'twitter-bootstrap-rails'
 gem 'jquery-turbolinks'
 gem 'faker'
 gem 'fog'
+gem 'rails_admin'
 
 gem 'dotenv-rails'
 
