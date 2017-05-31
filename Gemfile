@@ -51,6 +51,7 @@ gem 'jquery-turbolinks'
 gem 'faker'
 gem 'fog'
 gem 'rails_admin'
+gem 'cancan'
 
 gem 'dotenv-rails'
 
