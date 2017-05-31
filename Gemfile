@@ -48,7 +48,7 @@ gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-turbolinks'
-
+gem 'faker'
 gem 'fog'
 
 gem 'dotenv-rails'

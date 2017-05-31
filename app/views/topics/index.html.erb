@@ -6,6 +6,8 @@
     <% @topics.each do |topic| %>
     <div class="row">
       <h4><strong><%= topic.title %></strong></h4>
+      <p>投稿者ID:<%= topic.user.id if topic.user %></p>
+      <p>投稿者:<%= topic.user.name if topic.user %></p>
       <p><%= topic.content %></p>
       <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
       <%= link_to "削除", topic_path(topic.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
