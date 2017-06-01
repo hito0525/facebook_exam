@@ -5,7 +5,8 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.all
     @topics = Topic.order(:created_at).reverse_order
-
+    #binding.pry
+    #raise
   end
 
   def new

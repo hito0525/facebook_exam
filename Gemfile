@@ -32,10 +32,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
+# group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-end
+#   gem 'byebug'
+# end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -44,6 +44,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
 gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'twitter-bootstrap-rails'
@@ -52,14 +53,14 @@ gem 'faker'
 gem 'fog'
 gem 'rails_admin'
 gem 'cancan'
-
 gem 'dotenv-rails'
-
 gem 'unicorn'
-
 gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
+  gem 'byebug'
+  gem 'pry-rails'
+  gem 'better_errors'
   gem 'capistrano', '3.6.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
