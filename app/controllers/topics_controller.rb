@@ -5,9 +5,10 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.all
     @topics = Topic.order(:created_at).reverse_order
+  end
     #binding.pry
     #raise
-  end
+
 
   def new
     if params[:back]
