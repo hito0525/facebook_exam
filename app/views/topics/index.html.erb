@@ -4,13 +4,23 @@
     <h1>トピックス一覧</h1>
       <%= link_to "topicsを作成する", new_topic_path, class: 'btn btn-default' %>
     <% @topics.each do |topic| %>
-    <div class="row">
+    <div class="panel panel-primary">
+      <div class="panel-body">
       <h4><strong><%= topic.title %></strong></h4>
+      <p><%= simple_format (topic.content) %></p>
+        <div class="panel-body">
+        <p><%= profile_img(topic.user) %></p>
+        </div>
+      </div>
       <p>投稿者ID:<%= topic.user.id if topic.user %></p>
       <p>投稿者:<%= topic.user.name if topic.user %></p>
-      <p><%= topic.content %></p>
+      <% if current_user.id == topic.user_id %>
       <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
       <%= link_to "削除", topic_path(topic.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+        <br>
+        <br>
+
+      <% end %>
     </div>
     <% end %>
   </div>
