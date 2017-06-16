@@ -1,0 +1,13 @@
+<div class="container-child col-md-2 col-sm-4 col-xs-6 ">
+  <%= link_to user.name, user_path(user)  %>
+
+  <%= profile_img(user) %>
+
+  <% if user != current_user %>
+
+
+  <%= render partial: 'follow_form', locals: { user: user }  if signed_in? %>
+  <% else %>
+    <%= link_to 'ユーザー編集', edit_user_registration_path, class: 'btn btn-info' %>
+  <% end %>
+</div>

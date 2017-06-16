@@ -1,0 +1,33 @@
+<h2>ユーザー詳細ページ</h2>
+
+<aside class="sidebar">
+  <section>
+    <span class="label">ユーザー</span>
+    <h2 class="user-info"><%= @user.name %></h2>
+  </section>
+
+  <section>
+    <span class="label">プロフィール画像</span>
+    <h3 class="user-info">
+      <%= profile_img(@user) %>
+    </h3>
+  </section>
+
+  <h4>フォローしているユーザー</h4>
+    <% @followed_users.each do |user| %>
+            <ul class="usershow">
+              <li><%= profile_img(user) %></li>
+              <!-- <li><%= user.email %></li> -->
+              <li><%= user.name %></li>
+            </ul>
+    <% end %>
+
+  <h4>フォローされているユーザー</h4>
+    <% @followers.each do |user| %>
+      <ul class="usershow">
+        <li><%= profile_img(user) %></li>
+        <!-- <li><%= user.email %></li> -->
+        <li><%= user.name %></li>
+      </ul>
+    <% end %>
+</aside>
