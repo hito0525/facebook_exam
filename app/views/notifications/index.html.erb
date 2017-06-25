@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <h2><strong>お知らせ</strong></h2>
+    <ul>
+      <% @notifications.each do |notification| %>
+      <hr>
+        <li>
+         <p class="left"><strong><%= if notification.read? then "★【既読】" else "未読" end %></strong>
+
+           <%= notification.comment.user.try(:name) %>さんが
+            あなたのタイムライン（<%= link_to "#{notification.comment.topic.title}", topic_path(notification.comment.topic, notification_id: notification.id) %>）にコメントしました。</p>
+          <p class="right"><%= notification.created_at %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
