@@ -19,7 +19,4 @@ end
   content = Faker::Lorem.paragraph
   user_id = Faker::Number.between(1, 10)
   Topic.create!(title: title, content: content, user_id: user_id)
-  Comment.create!(topic_id: topic_id,
-                  user_id: user_id,
-                  content: content)
 end
