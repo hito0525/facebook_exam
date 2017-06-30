@@ -15,9 +15,10 @@
  */
 
 header {
-  width: 120%;
+  width: 100%;
   background-color:#3B5998;
   height: 70px;
+  font-size: 13px;
   text-align: center;
 }
 
