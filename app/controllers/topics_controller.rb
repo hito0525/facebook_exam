@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :current_user, only: [:edit,:update]
   before_action :set_topic, only:[:show,:edit, :update, :destroy]
+  before_action :authenticated_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @topics = Topic.all
@@ -23,8 +25,10 @@ class TopicsController < ApplicationController
   def new
     if params[:back]
       @topic = Topic.new(topics_params)
+      @topic.user_id = current_user.id
     else
       @topic = Topic.new
+      @topic.user_id = current_user.id
     end
   end
 
@@ -58,15 +62,23 @@ class TopicsController < ApplicationController
 
   def confirm
     @topic = Topic.new(topics_params)
+    @topic.user_id = current_user.id
+    render :new if @topic.invalid?
   end
 
 
   private
     def topics_params
-      params.require(:topic).permit(:title, :content)
+      params.require(:topic).permit(:title, :content, :user_id)
     end
 
     def set_topic
       @topic = Topic.find(params[:id])
     end
+
+     def authenticated_user
+      unless current_user == @topic.user
+        redirect_to root_path, alert: "この操作はできません。"
+      end
+     end
 end
