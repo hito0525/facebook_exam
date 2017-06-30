@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_comment, only: [:edit, :update, :destroy]
+
   # コメントを保存、投稿するためのアクションです。
   def create
     @comment = current_user.comments.build(comment_params)
@@ -22,6 +25,19 @@ class CommentsController < ApplicationController
       end
     end
   end
+#画面を作って更新可能へ
+  def edit
+    @comment = Comment.find(params[:id])
+    @topic = @comment.topic
+  end
+
+  def update
+    if @comment.update(comment_params)
+      redirect_to topic_path(@comment.topic)
+    else
+      render :edit
+    end
+  end
 
   def destroy
     @comment = Comment.find(params[:id])
@@ -37,11 +53,21 @@ class CommentsController < ApplicationController
       end
     end
   end
+private
 
-
-  private
-    # ストロングパラメーター
     def comment_params
       params.require(:comment).permit(:topic_id, :content)
     end
-end
+
+    def set_comment
+      @comment = current_user.comments.find(params[:id])
+    end
+  end
+
+
+#   private
+#     # ストロングパラメーター
+#     def comment_params
+#       params.require(:comment).permit(:topic_id, :content)
+#     end
+# end
